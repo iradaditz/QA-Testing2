@@ -8,11 +8,10 @@ import pytest
 
 @pytest.fixture
 def driver():
-    """Фикстура для запуска Firefox"""
-    # Если geckodriver уже в PATH — путь указывать не нужно.
+    
     service = Service()
     options = Options()
-    # options.add_argument("--headless")  # можно включить, чтобы не открывалось окно браузера
+   
 
     driver = webdriver.Firefox(service=service, options=options)
     driver.maximize_window()
@@ -25,11 +24,11 @@ def test_payment_methods(driver):
     driver.get("https://itcareerhub.de/ru")
     sleep(3)
 
-    # Находим и кликаем по ссылке "Способы оплаты"
+    
     payment_link = driver.find_element(By.LINK_TEXT, "Способы оплаты")
     payment_link.click()
     sleep(3)
 
-    # Скриншот всей страницы
-    driver.save_screenshot("payment_methods_section.png")
+    
+    driver.save_screenshot("payment_methods_section.png")    # Скриншот всей страницы
     sleep(2)
